@@ -1,0 +1,16 @@
+package com.gws.api.apigws.models;
+
+public enum TipoConceito {
+    MEIA_ESTRELA,
+    UM_ESTRELA,
+    UM_ESTRELA_MEIA,
+    DUAS_ESTRELAS,
+    DUAS_ESTRELAS_MEIA,
+    TRES_ESTRELAS,
+    TRES_ESTRELAS_MEIA,
+    QUATRO_ESTRELAS,
+    QUATRO_ESTRELAS_MEIA,
+    CINCO_ESTRELAS,
+    CINCO_ESTRELAS_MEIA,
+    SEIAS_ESTRELAS
+}
