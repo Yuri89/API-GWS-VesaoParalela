@@ -59,8 +59,6 @@ public class DemandasModel implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "id_usuario",unique = false)
 
     )
-
-
     private Set<UsuarioModel> id_usuarios = new HashSet<>();
 
     @ManyToMany
@@ -78,8 +76,9 @@ public class DemandasModel implements Serializable {
     private ClientesModel id_cliente;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuarios", referencedColumnName = "id_usuarios")
-    private  UsuarioModel lider_squad;
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    private UsuarioModel lider_squad;
+
 
 
 }

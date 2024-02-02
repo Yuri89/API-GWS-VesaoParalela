@@ -29,4 +29,8 @@ public class SoftSkillsModel implements Serializable {
 
     @ManyToMany(mappedBy = "id_softskill")
     private Set<UsuarioModel> id_usuario = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "id_demanda",referencedColumnName = "id_demanda")
+    private DemandasModel id_demanda;
 }
