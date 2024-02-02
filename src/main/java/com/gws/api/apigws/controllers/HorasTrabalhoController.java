@@ -76,7 +76,7 @@ public class HorasTrabalhoController {
         Optional<HorasTrabalhoModel> buscandoHorasTrabalho = horasTrabalhoRepository.findById(id);
 
         if (buscandoHorasTrabalho.isEmpty()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Hard Skill não encontrado");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dias e Horas Trabalhadas não encontrado");
         }
 
         HorasTrabalhoModel horasTrabalhoEditada = buscandoHorasTrabalho.get();
@@ -92,11 +92,11 @@ public class HorasTrabalhoController {
         Optional<HorasTrabalhoModel> horasTrabalhoBuscado = horasTrabalhoRepository.findById(id);
 
         if (horasTrabalhoBuscado.isEmpty()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Hard Skill não encontrado");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dias e Horas Trabalhadas encontrado");
         }
 
         horasTrabalhoRepository.delete(horasTrabalhoBuscado.get());
-        return ResponseEntity.status(HttpStatus.OK).body("Hard Skill deletado com sucesso!");
+        return ResponseEntity.status(HttpStatus.OK).body("Dias e Horas Trabalhadas deletado com sucesso!");
 
     }
 }

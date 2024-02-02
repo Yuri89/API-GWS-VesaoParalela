@@ -21,6 +21,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+
+//editar clientes tá com problemas
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(value = "/clientes", produces = {"application/json"})
@@ -113,8 +115,8 @@ public class ClientesController {
         return ResponseEntity.status(HttpStatus.CREATED).body(clientesRepository.save(clienteEditado));
     }
 
-    @DeleteMapping("/{idCliente}")
-    public ResponseEntity<Object> deletarCliente(@PathVariable(value = "idCliente") UUID id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deletarCliente(@PathVariable(value = "id") UUID id){
 
         Optional<ClientesModel> clienteBuscado = clientesRepository.findById(id);
 

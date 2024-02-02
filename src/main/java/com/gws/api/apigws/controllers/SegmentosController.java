@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+
+//segmentos está com falha no Deletar
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(value = "/segmentos")

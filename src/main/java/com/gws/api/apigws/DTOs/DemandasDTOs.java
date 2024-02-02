@@ -23,7 +23,10 @@ public record DemandasDTOs(
 
         List<String> id_segmento,
         UUID id_cliente,
-        List<String> id_usuario
+        List<String> id_usuario,
+        List<String> id_hard,
+        List<String> id_soft
+
 
 ) {
 

@@ -99,6 +99,21 @@ public class DemandasController {
         return ResponseEntity.status(HttpStatus.OK).body(resposta);
     }
 
+    @GetMapping(value = "/dashboard")
+    public ResponseEntity<Object> BuscarDashboardDemandas(){
+
+        List<DemandasModel> demandasList = demandasRepository.findAll();
+
+        int total = 0;
+
+        for (DemandasModel demandas : demandasList){
+            int custo = demandas.getCusto();
+            total =+ custo;
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(total);
+    }
+
     @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<Object> criarDemanda(@ModelAttribute @Valid DemandasDTOs demandasDTOs){
 
@@ -190,8 +205,8 @@ public class DemandasController {
         return ResponseEntity.status(HttpStatus.CREATED).body(demandasRepository.save(novaDemanda));
     }
 
-    @PutMapping(name = "/{id}",consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public ResponseEntity<Object> criarCliente(@PathVariable(value = "id") UUID id, @ModelAttribute @Valid DemandasDTOs demandasDTOs){
+    @PutMapping(value = "/{id}",consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    public ResponseEntity<Object> criarDemanda(@PathVariable(value = "id") UUID id, @ModelAttribute @Valid DemandasDTOs demandasDTOs){
         Optional<DemandasModel> buscandoDemanda = demandasRepository.findById(id);
 
         if (buscandoDemanda.isEmpty()){

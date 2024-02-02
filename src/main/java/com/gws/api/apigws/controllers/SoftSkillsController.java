@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+
+//está funcionando porém verificar se outras skills e segmentos podem cadastrar sem usuario e demanda
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(value = "/softskills")

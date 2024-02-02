@@ -77,5 +77,9 @@ public class DemandasModel implements Serializable {
     @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
     private ClientesModel id_cliente;
 
+    @ManyToOne
+    @JoinColumn(name = "id_usuarios", referencedColumnName = "id_usuarios")
+    private  UsuarioModel lider_squad;
+
 
 }
