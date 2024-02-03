@@ -1,14 +1,8 @@
 package com.gws.api.apigws.controllers;
 
 import com.gws.api.apigws.DTOs.DemandasDTOs;
-import com.gws.api.apigws.models.ClientesModel;
-import com.gws.api.apigws.models.DemandasModel;
-import com.gws.api.apigws.models.SegmentosModel;
-import com.gws.api.apigws.models.UsuarioModel;
-import com.gws.api.apigws.repositories.ClientesRepository;
-import com.gws.api.apigws.repositories.DemandasRepository;
-import com.gws.api.apigws.repositories.SegmentosRepository;
-import com.gws.api.apigws.repositories.UsuariosRepository;
+import com.gws.api.apigws.models.*;
+import com.gws.api.apigws.repositories.*;
 import com.gws.api.apigws.services.ConcatenarStrings;
 import com.gws.api.apigws.services.ConverterDataTime;
 import com.gws.api.apigws.services.FileUploadService;
@@ -46,6 +40,10 @@ public class DemandasController {
     ClientesRepository clientesRepository;
     @Autowired
     ConcatenarStrings concatenarStrings;
+    @Autowired
+    HardSkillsRepository hardSkillsRepository;
+    @Autowired
+    SoftSkillsRepository softSkillsRepository;
 
 
     @GetMapping
@@ -139,6 +137,20 @@ public class DemandasController {
         List<SegmentosModel> segmentosList = segmentosRepository.findAllById(segmentosConvert);
         Set<SegmentosModel> segmentosAssociados = new HashSet<>(segmentosList);
 
+        List<UUID> hardskill = demandasDTOs.id_hard().stream()
+                .map(UUID::fromString)
+                .collect(Collectors.toList());
+
+        List<HardSkillsModel> hardList = hardSkillsRepository.findAllById(hardskill);
+        Set<HardSkillsModel> hardAssociados = new HashSet<>(hardList);
+
+        List<UUID> softskill = demandasDTOs.id_soft().stream()
+                .map(UUID::fromString)
+                .collect(Collectors.toList());
+
+        List<SoftSkillsModel> softList = softSkillsRepository.findAllById(softskill);
+        Set<SoftSkillsModel> softAssociados = new HashSet<>(softList);
+
         Optional<ClientesModel> clienteOptional = clientesRepository.findById(demandasDTOs.id_cliente());
 
 
@@ -194,10 +206,23 @@ public class DemandasController {
         }else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Usuarios não encontrado");
         }
+
         if (segmentosAssociados.containsAll(segmentosList)){
             novaDemanda.setId_segmentos(segmentosAssociados);
         }else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Segmentos não encontrado");
+        }
+
+        if (hardAssociados.containsAll(hardList)){
+            novaDemanda.setId_hardskill(hardAssociados);
+        }else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Hard Skill não encontrado");
+        }
+
+        if (softAssociados.containsAll(softList)){
+            novaDemanda.setId_softskill(softAssociados);
+        }else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Soft Skill não encontrado");
         }
 
 

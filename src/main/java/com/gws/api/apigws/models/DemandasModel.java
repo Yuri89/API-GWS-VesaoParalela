@@ -79,6 +79,11 @@ public class DemandasModel implements Serializable {
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     private UsuarioModel lider_squad;
 
+    @OneToMany(cascade = CascadeType.ALL ,mappedBy = "id_softskills")
+    private Set<SoftSkillsModel> id_softskill;
+
+    @OneToMany(cascade = CascadeType.ALL ,mappedBy = "id_hardskills")
+    private Set<HardSkillsModel> id_hardskill;
 
 
 }

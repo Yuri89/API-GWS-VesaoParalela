@@ -6,7 +6,8 @@ import java.util.UUID;
 
 public record HardSkillsDTOs(
         @NotBlank String nome,
-        UUID usuarios
+        UUID usuarios,
+        UUID Demanda
         ) {
 
 }
