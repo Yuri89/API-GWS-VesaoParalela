@@ -153,6 +153,9 @@ public class DemandasController {
 
         Optional<ClientesModel> clienteOptional = clientesRepository.findById(demandasDTOs.id_cliente());
 
+        Optional<UsuarioModel> lidersquadOptional = usuariosRepository.findById(demandasDTOs.id_lider());
+
+
 
 
         DemandasModel novaDemanda = new DemandasModel();
@@ -201,6 +204,14 @@ public class DemandasController {
         }else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cliente não encontrado");
         }
+
+        if (lidersquadOptional.isPresent()){
+            UsuarioModel lider = lidersquadOptional.get();
+            novaDemanda.setLider_squad(lider);
+        }else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cliente não encontrado");
+        }
+
         if (usuariosAssociados.containsAll(usuariosList)){
             novaDemanda.setId_usuarios(usuariosAssociados);
         }else {

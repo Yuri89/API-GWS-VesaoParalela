@@ -18,6 +18,7 @@ public record DemandasDTOs(
         @NotNull boolean privacidade,
         TipoStatusModel status,
         @NotBlank String data_final,
+
         @NotNull double custo,
         List<MultipartFile> copy_anexo,
 

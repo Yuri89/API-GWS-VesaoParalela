@@ -30,8 +30,6 @@ public class HardSkillsModel implements Serializable {
     @ManyToMany(mappedBy = "id_hardskill")
     private Set<UsuarioModel> id_usuario = new HashSet<>();
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_demanda",referencedColumnName = "id_demanda")
-    private DemandasModel id_demanda;
+    @ManyToMany(mappedBy = "id_hardskill")
+    private Set<DemandasModel> id_demanda = new HashSet<>();
 }

@@ -76,14 +76,29 @@ public class DemandasModel implements Serializable {
     private ClientesModel id_cliente;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    @JoinColumn(name = "lider_squad", referencedColumnName = "id_usuario")
     private UsuarioModel lider_squad;
 
-    @OneToMany(cascade = CascadeType.ALL ,mappedBy = "id_softskills")
-    private Set<SoftSkillsModel> id_softskill;
 
-    @OneToMany(cascade = CascadeType.ALL ,mappedBy = "id_hardskills")
-    private Set<HardSkillsModel> id_hardskill;
+    @ManyToMany
+    @JoinTable(
+            name = "tb_hardskills_demandas",
+            joinColumns = @JoinColumn(name = "id_demanda",unique = false),
+            inverseJoinColumns = @JoinColumn(name = "id_hardskill",unique = false)
+
+    )
+    @org.hibernate.annotations.Index(name = "idx_demanda_hardskill")
+    private Set<HardSkillsModel> id_hardskill = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "tb_softskills_demandas",
+            joinColumns = @JoinColumn(name = "id_demanda",unique = false),
+            inverseJoinColumns = @JoinColumn(name = "id_softskill",unique = false)
+
+    )
+    @org.hibernate.annotations.Index(name = "idx_demanda_softskill")
+    private Set<SoftSkillsModel> id_softskill = new HashSet<>();
 
 
 }
