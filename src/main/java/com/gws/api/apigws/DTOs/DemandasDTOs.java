@@ -17,8 +17,8 @@ public record DemandasDTOs(
         TipoPrioridadeModel prioridade,
         @NotNull boolean privacidade,
         TipoStatusModel status,
+        @NotBlank String data_inicio,
         @NotBlank String data_final,
-
         @NotNull double custo,
         List<MultipartFile> copy_anexo,
 

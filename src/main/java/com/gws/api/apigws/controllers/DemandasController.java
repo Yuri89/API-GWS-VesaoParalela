@@ -151,13 +151,6 @@ public class DemandasController {
         List<SoftSkillsModel> softList = softSkillsRepository.findAllById(softskill);
         Set<SoftSkillsModel> softAssociados = new HashSet<>(softList);
 
-        Optional<ClientesModel> clienteOptional = clientesRepository.findById(demandasDTOs.id_cliente());
-
-        Optional<UsuarioModel> lidersquadOptional = usuariosRepository.findById(demandasDTOs.id_lider());
-
-
-
-
         DemandasModel novaDemanda = new DemandasModel();
         BeanUtils.copyProperties(demandasDTOs, novaDemanda);
 
@@ -182,11 +175,11 @@ public class DemandasController {
         }
 
         LocalDate data1;
-        LocalDateTime data2 = LocalDateTime.now();
+        LocalDate data2;
 
         try{
             data1 = converterDataTime.StringToDate(demandasDTOs.data_final());
-
+            data2 = converterDataTime.StringToDate(demandasDTOs.data_inicio());
         }catch (Exception e){
             throw new RuntimeException(e);
         }
@@ -196,20 +189,24 @@ public class DemandasController {
         novaDemanda.setData_final(data1);
         novaDemanda.setData_inicio(data2);
 
+        if (demandasDTOs.id_cliente() != null){
+            Optional<ClientesModel> clienteOptional = clientesRepository.findById(demandasDTOs.id_cliente());
 
-
-        if (clienteOptional.isPresent()){
-            ClientesModel cliente = clienteOptional.get();
-            novaDemanda.setId_cliente(cliente);
-        }else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cliente não encontrado");
+            if (clienteOptional != null){
+                ClientesModel cliente = clienteOptional.get();
+                novaDemanda.setId_cliente(cliente);
+            }else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cliente não encontrado");
+            }
         }
-
-        if (lidersquadOptional.isPresent()){
-            UsuarioModel lider = lidersquadOptional.get();
-            novaDemanda.setLider_squad(lider);
-        }else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cliente não encontrado");
+        if (demandasDTOs.id_lider() != null){
+            Optional<UsuarioModel> lidersquadOptional = usuariosRepository.findById(demandasDTOs.id_lider());
+            if (lidersquadOptional.isPresent()){
+                UsuarioModel lider = lidersquadOptional.get();
+                novaDemanda.setLider_squad(lider);
+            }else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cliente não encontrado");
+            }
         }
 
         if (usuariosAssociados.containsAll(usuariosList)){
@@ -298,10 +295,11 @@ public class DemandasController {
         }
 
         LocalDate data1;
-        LocalDateTime data2 = LocalDateTime.now();
+        LocalDate data2;
 
         try{
             data1 = converterDataTime.StringToDate(demandasDTOs.data_final());
+            data2 = converterDataTime.StringToDate(demandasDTOs.data_inicio());
         }catch (Exception e){
             throw new RuntimeException(e);
         }

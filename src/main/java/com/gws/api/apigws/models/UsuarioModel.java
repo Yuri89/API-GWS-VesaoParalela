@@ -17,6 +17,8 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.*;
 
+// Faltando A designação do usuario
+
 @Getter
 @Setter
 @Entity

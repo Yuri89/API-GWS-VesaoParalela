@@ -43,7 +43,7 @@ public class DemandasModel implements Serializable {
     @Column(nullable = false,unique = false,columnDefinition = "BIT")
     private TipoStatusModel status;
     @Column(nullable = false,unique = false)
-    private LocalDateTime data_inicio;
+    private LocalDate data_inicio;
     @Column(nullable = false,unique = false)
     private LocalDate data_final;
     @Column(nullable = false,unique = false)
