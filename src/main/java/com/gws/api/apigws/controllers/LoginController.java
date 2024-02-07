@@ -24,6 +24,8 @@ public class LoginController {
     @Autowired
     private TokenService tokenService;
 
+
+
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody @Valid LoginDto dadosLogin){
         var usernamePassword = new UsernamePasswordAuthenticationToken(dadosLogin.email(), dadosLogin.senha());

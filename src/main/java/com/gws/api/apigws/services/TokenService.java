@@ -23,6 +23,7 @@ public class TokenService {
             String token = JWT.create()
                     .withIssuer("GWS-Api")
                     .withSubject(usuario.getEmail())
+                    .withClaim("idUsuario", usuario.getId_usuario().toString())
                     .withExpiresAt(gerarValidadeToken())
                     .sign(algoritimo);
             return token;
