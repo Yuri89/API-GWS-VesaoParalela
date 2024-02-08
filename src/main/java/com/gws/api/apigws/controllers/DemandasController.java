@@ -15,10 +15,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -28,6 +26,9 @@ import java.util.stream.Collectors;
 public class DemandasController {
     @Autowired
     DemandasRepository demandasRepository;
+    @Autowired
+    ListaDemandasRepository listaDemandasRepository;
+
     @Autowired
     FileUploadService fileUploadService;
     @Autowired
@@ -97,6 +98,15 @@ public class DemandasController {
         return ResponseEntity.status(HttpStatus.OK).body(resposta);
     }
 
+    @GetMapping(value = "/lista-demandas")
+    public ResponseEntity<Object> BuscarListaDemandas(){
+
+        List<ListaDemandasModel> demandasList = listaDemandasRepository.findAll();
+
+
+        return ResponseEntity.status(HttpStatus.OK).body(demandasList);
+    }
+
     @GetMapping(value = "/dashboard")
     public ResponseEntity<Object> BuscarDashboardDemandas(){
 
@@ -111,6 +121,8 @@ public class DemandasController {
 
         return ResponseEntity.status(HttpStatus.OK).body(total);
     }
+
+
 
     @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<Object> criarDemanda(@ModelAttribute @Valid DemandasDTOs demandasDTOs){
@@ -154,24 +166,26 @@ public class DemandasController {
         DemandasModel novaDemanda = new DemandasModel();
         BeanUtils.copyProperties(demandasDTOs, novaDemanda);
 
-        String urlArquivo;
+        String urlArquivo = null;
         List<String> urlArquivoList = new ArrayList<>();
         int indice = 1;
 
-        try{
-            for (MultipartFile anexo : demandasDTOs.copy_anexo()){
-                String urlArquivoLoop = fileUploadService.fazerMultiploUpload(anexo , demandasDTOs.titulo() ,indice);
-                urlArquivoList.add(urlArquivoLoop);
-                indice++;
+        if (demandasDTOs.copy_anexo() == null) {
+            try {
+                for (MultipartFile anexo : demandasDTOs.copy_anexo()) {
+                    String urlArquivoLoop = fileUploadService.fazerMultiploUpload(anexo, demandasDTOs.titulo(), indice);
+                    urlArquivoList.add(urlArquivoLoop);
+                    indice++;
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-        }catch (IOException e){
-            throw new RuntimeException(e);
-        }
 
-        try{
-            urlArquivo = concatenarStrings.juntarStrings(urlArquivoList);
-        }catch (IOException e){
-            throw new RuntimeException(e);
+            try {
+                urlArquivo = concatenarStrings.juntarStrings(urlArquivoList);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         LocalDate data1;

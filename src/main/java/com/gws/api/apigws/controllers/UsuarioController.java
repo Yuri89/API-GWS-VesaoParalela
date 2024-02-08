@@ -1,5 +1,6 @@
 package com.gws.api.apigws.controllers;
 
+import com.gws.api.apigws.DTOs.ImagemDtos;
 import com.gws.api.apigws.DTOs.UsuariosDTOs;
 import com.gws.api.apigws.models.DemandasModel;
 import com.gws.api.apigws.models.HardSkillsModel;
@@ -11,6 +12,9 @@ import com.gws.api.apigws.repositories.SoftSkillsRepository;
 import com.gws.api.apigws.repositories.UsuariosRepository;
 import com.gws.api.apigws.services.ConverterDataTime;
 import com.gws.api.apigws.services.FileUploadService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,13 +83,16 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.OK).body(usuarioBuscado.get());
     }
 
+    @Operation(summary = "Método para cadastrar um Usuário", method = "POST")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Cadastro foi efetuado com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Paramatros inválidos")
+    })
     @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<Object> criarUsuario(@ModelAttribute @Valid UsuariosDTOs usuariosDtos) {
         if (usuarioRepository.findByEmail(usuariosDtos.email()) != null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Usuario já cadastrado");
         }
-
-
 
         UsuarioModel novoUsuario = new UsuarioModel();
         BeanUtils.copyProperties(usuariosDtos, novoUsuario);
@@ -93,11 +100,13 @@ public class UsuarioController {
         String urlImagem;
         LocalDateTime dataAtual = LocalDateTime.now();
 
-        try{
+
+        try {
             urlImagem = fileUploadService.fazerUpload(usuariosDtos.foto());
-        }catch (IOException e){
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
 
         LocalTime horassemanais;
         LocalDate dataferias;
@@ -233,6 +242,29 @@ public class UsuarioController {
         usuarioEditado.setSenha(senhaCript);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuarioEditado));
+    }
+
+    @PutMapping(value = "/editarImagem/{idUsuario}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    public ResponseEntity<Object> editarImagemUsuario(@PathVariable(value = "idUsuario") UUID id, @ModelAttribute @Valid ImagemDtos imagemDto){
+        Optional<UsuarioModel> usuarioBuscado = usuarioRepository.findById(id);
+
+        if (usuarioBuscado.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario não encontrado");
+        }
+        UsuarioModel usuarioBd = usuarioBuscado.get();
+        BeanUtils.copyProperties(usuarioBuscado, usuarioBd);
+        String urlImagem;
+
+        try{
+            urlImagem = fileUploadService.fazerUpload(imagemDto.imagem());
+        }catch (IOException e){
+            throw new RuntimeException(e);
+        }
+
+        usuarioBd.setUrl_img(urlImagem);
+
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.save(usuarioBd));
+
     }
 
     @DeleteMapping("/{id}")

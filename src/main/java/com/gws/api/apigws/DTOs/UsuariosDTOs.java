@@ -2,6 +2,7 @@ package com.gws.api.apigws.DTOs;
 
 import com.gws.api.apigws.models.TipoUsuarioModel;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Null;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -23,12 +24,14 @@ public record UsuariosDTOs(
         String semanaTrabalhada,
         String mesTrabalhado,
         String anoTrabalhado,
-        MultipartFile foto,
+
         String descricao,
 
         List<String> id_demandas,
         List<String> id_hardskills,
-        List<String> id_softSkills
+        List<String> id_softSkills,
+
+        MultipartFile foto
 
         ) {
 
