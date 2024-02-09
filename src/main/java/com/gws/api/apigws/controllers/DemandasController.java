@@ -54,24 +54,32 @@ public class DemandasController {
 
         for (DemandasModel demandas : demandasRepository.findAll()) {
             String filesDemanda = fileUploadService.getDiretorioAnx().toString();
-            List<String> strDemanda = Arrays.asList(demandas.getAnexo().split(","));
 
-            for (String listaLinks : strDemanda) {
-                String lA = filesDemanda + listaLinks;
-                linksAnexos.add(lA);
+            String anexo = demandas.getAnexo();
+
+            if (anexo != null) {
+                if (anexo.contains(",")) {
+                    List<String> strDemanda = Arrays.asList(anexo.split(","));
+                    for (String listaLinks : strDemanda) {
+                        String lA = filesDemanda + listaLinks;
+                        linksAnexos.add(lA);
+                    }
+                } else {
+                    String lA = filesDemanda + anexo;
+                    linksAnexos.add(lA);
+                }
             }
 
             demandasList.add(demandas);
         }
 
-        // Você pode decidir o que retornar com base na lógica do seu aplicativo
-        // Neste exemplo, estamos retornando um Map que mapeia chaves para listas específicas.
         Map<String, Object> resposta = new HashMap<>();
         resposta.put("demandas", demandasList);
         resposta.put("linksAnexos", linksAnexos);
 
         return ResponseEntity.status(HttpStatus.OK).body(resposta);
     }
+
 
 
     @GetMapping(value = "/{id}")
@@ -82,27 +90,43 @@ public class DemandasController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Demanda não encontrado");
         }
 
+        DemandasModel demanda = buscandoDemandas.get();
         List<String> linksAnexos = new ArrayList<>();
         String filesDemanda = fileUploadService.getDiretorioAnx().toString();
-        List<String> strDemanda = Arrays.asList(buscandoDemandas.get().getAnexo().split(","));
 
-        for (String listaLinks : strDemanda) {
-            String lA = filesDemanda + listaLinks;
-            linksAnexos.add(lA);
+        String anexo = demanda.getAnexo();
+        if (anexo != null) {
+            List<String> strDemanda = Arrays.asList(anexo.split(","));
+            for (String listaLinks : strDemanda) {
+                String lA = filesDemanda + listaLinks;
+                linksAnexos.add(lA);
+            }
         }
 
         Map<String, Object> resposta = new HashMap<>();
-        resposta.put("demandas", buscandoDemandas);
+        resposta.put("demandas", demanda);
         resposta.put("linksAnexos", linksAnexos);
 
         return ResponseEntity.status(HttpStatus.OK).body(resposta);
     }
+
 
     @GetMapping(value = "/lista-demandas")
     public ResponseEntity<Object> BuscarListaDemandas(){
 
         List<ListaDemandasModel> demandasList = listaDemandasRepository.findAll();
 
+        for (ListaDemandasModel demanda : demandasList) {
+            Set<ListaUsuariosModel> usuarios = demanda.getId_usuario();
+
+            for (ListaUsuariosModel usuario : usuarios) {
+                String fileFoto = fileUploadService.getDiretorioImg().toString();
+                String strFoto = usuario.getUrl_img();
+
+                String linkFoto = fileFoto + strFoto;
+                usuario.setUrl_img(linkFoto);
+            }
+        }
 
         return ResponseEntity.status(HttpStatus.OK).body(demandasList);
     }

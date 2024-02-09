@@ -64,6 +64,7 @@ public class UsuarioController {
             String linkFoto = fileFoto+strFoto;
             usuario.setUrl_img(linkFoto);
         }
+
         return ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.findAll());
     }
 
@@ -75,6 +76,7 @@ public class UsuarioController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario não encontrado");
         }
 
+        // fazer um novo end point para android e um get sem isso
         Path urlImg = fileUploadService.getDiretorioImg();
         UsuarioModel usuarioimg = usuarioBuscado.get();
         UsuarioModel usuario = usuarioBuscado.get();
