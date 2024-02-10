@@ -31,20 +31,21 @@ public class FileUploadService {
             return null;
         }
 
-        String[] nomeArquivoArray = imagem.getOriginalFilename().split("\\."); // NomeArquivo.png
-        String novoNome = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
-        String extensaoArquivo = nomeArquivoArray[nomeArquivoArray.length - 1];
+            String[] nomeArquivoArray = imagem.getOriginalFilename().split("\\."); // NomeArquivo.png
+            String novoNome = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyyHHmmss"));
+            String extensaoArquivo = nomeArquivoArray[nomeArquivoArray.length - 1];
 
-        String nomeImagem = novoNome + "." + extensaoArquivo;
+            String nomeImagem = novoNome + "." + extensaoArquivo;
 
-        File imagemCriada = new File(diretorioImg+ "\\" +nomeImagem);
+            File imagemCriada = new File(diretorioImg + "\\" + nomeImagem);
 
-        BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(imagemCriada));
+            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(imagemCriada));
 
-        stream.write(imagem.getBytes());
-        stream.close();
+            stream.write(imagem.getBytes());
+            stream.close();
 
-        return nomeImagem;
+            return nomeImagem;
+
     }
 
     public String fazerMultiploUpload(MultipartFile anexo, String nomeDemanda  , int anexoN) throws IOException {

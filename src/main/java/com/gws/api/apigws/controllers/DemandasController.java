@@ -116,6 +116,7 @@ public class DemandasController {
 
         List<ListaDemandasModel> demandasList = listaDemandasRepository.findAll();
 
+
         for (ListaDemandasModel demanda : demandasList) {
             Set<ListaUsuariosModel> usuarios = demanda.getId_usuario();
 
@@ -126,7 +127,20 @@ public class DemandasController {
                 String linkFoto = fileFoto + strFoto;
                 usuario.setUrl_img(linkFoto);
             }
+
+            Set<TarefasInfoModel> tarefas = demanda.getTarefas();
+
+            int tamanhoTarefa = tarefas.size();
+
+            demanda.setTamanhoTarefa(tamanhoTarefa);
+
+            for (int tamanho = 0 ; tamanho < tarefas.size() ; tamanho++){
+                
+            }
+
         }
+
+
 
         return ResponseEntity.status(HttpStatus.OK).body(demandasList);
     }
@@ -194,23 +208,22 @@ public class DemandasController {
         List<String> urlArquivoList = new ArrayList<>();
         int indice = 1;
 
-        if (demandasDTOs.copy_anexo() == null) {
-            try {
-                for (MultipartFile anexo : demandasDTOs.copy_anexo()) {
-                    String urlArquivoLoop = fileUploadService.fazerMultiploUpload(anexo, demandasDTOs.titulo(), indice);
-                    urlArquivoList.add(urlArquivoLoop);
-                    indice++;
-                }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
 
-            try {
-                urlArquivo = concatenarStrings.juntarStrings(urlArquivoList);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+        try {
+            for (MultipartFile anexo : demandasDTOs.copy_anexo()) {
+                String urlArquivoLoop = fileUploadService.fazerMultiploUpload(anexo, demandasDTOs.titulo(), indice);
+                urlArquivoList.add(urlArquivoLoop);
+                indice++;
             }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+        try {
+            urlArquivo = concatenarStrings.juntarStrings(urlArquivoList);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
         LocalDate data1;
         LocalDate data2;

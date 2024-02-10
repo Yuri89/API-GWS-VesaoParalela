@@ -1,6 +1,7 @@
 package com.gws.api.apigws.models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -40,4 +41,9 @@ public class ListaDemandasModel implements Serializable {
     private Set<ListaUsuariosModel> id_usuario = new HashSet<>();
 
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "demanda", cascade = CascadeType.REFRESH)
+    private Set<TarefasInfoModel> tarefas;
+
+    private int tamanhoTarefa;
 }
