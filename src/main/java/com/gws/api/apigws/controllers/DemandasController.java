@@ -61,11 +61,11 @@ public class DemandasController {
                 if (anexo.contains(",")) {
                     List<String> strDemanda = Arrays.asList(anexo.split(","));
                     for (String listaLinks : strDemanda) {
-                        String lA = filesDemanda + listaLinks;
+                        String lA = filesDemanda+ "\\" + listaLinks.trim();
                         linksAnexos.add(lA);
                     }
                 } else {
-                    String lA = filesDemanda + anexo;
+                    String lA = filesDemanda + "\\" + anexo.trim();
                     linksAnexos.add(lA);
                 }
             }
@@ -112,37 +112,50 @@ public class DemandasController {
 
 
     @GetMapping(value = "/lista-demandas")
-    public ResponseEntity<Object> BuscarListaDemandas(){
+    public ResponseEntity<Object> buscarListaDemandas() {
 
         List<ListaDemandasModel> demandasList = listaDemandasRepository.findAll();
-
+        List<Map<String, Object>> respostaList = new ArrayList<>();
 
         for (ListaDemandasModel demanda : demandasList) {
+            Map<String, Object> resposta = new LinkedHashMap<>();
             Set<ListaUsuariosModel> usuarios = demanda.getId_usuario();
+            String[] anexos = demanda.getAnexo().split(",");
+
+            for (int i = 0; i < anexos.length; i++) {
+                anexos[i] = fileUploadService.getDiretorioAnx() + anexos[i].trim();
+            }
+
+            List<String> anexosLista = List.of(anexos);
 
             for (ListaUsuariosModel usuario : usuarios) {
                 String fileFoto = fileUploadService.getDiretorioImg().toString();
                 String strFoto = usuario.getUrl_img();
-
                 String linkFoto = fileFoto + strFoto;
                 usuario.setUrl_img(linkFoto);
             }
 
             Set<TarefasInfoModel> tarefas = demanda.getTarefas();
-
             int tamanhoTarefa = tarefas.size();
+            int tamanhoDois = 0;
 
-            demanda.setTamanhoTarefa(tamanhoTarefa);
-
-            for (int tamanho = 0 ; tamanho < tarefas.size() ; tamanho++){
-                
+            for (TarefasInfoModel tamanho : tarefas) {
+                if (tamanho.getConclusao() == TipoConclusao.TUDO_CONCLUIDO) {
+                    tamanhoDois++;
+                }
             }
 
+
+
+            resposta.put("demandas", demanda);
+            resposta.put("tamanho", tamanhoTarefa);
+            resposta.put("concluidas", tamanhoDois);
+            resposta.put("anexos", anexosLista);
+
+            respostaList.add(resposta);
         }
 
-
-
-        return ResponseEntity.status(HttpStatus.OK).body(demandasList);
+        return ResponseEntity.status(HttpStatus.OK).body(respostaList);
     }
 
     @GetMapping(value = "/dashboard")
@@ -150,11 +163,11 @@ public class DemandasController {
 
         List<DemandasModel> demandasList = demandasRepository.findAll();
 
-        int total = 0;
+        double total = 0;
 
         for (DemandasModel demandas : demandasList){
-            int custo = demandas.getCusto();
-            total =+ custo;
+            double custo = demandas.getCusto();
+            total += custo;
         }
 
         return ResponseEntity.status(HttpStatus.OK).body(total);
@@ -204,7 +217,8 @@ public class DemandasController {
         DemandasModel novaDemanda = new DemandasModel();
         BeanUtils.copyProperties(demandasDTOs, novaDemanda);
 
-        String urlArquivo = null;
+        String urlArquivo;
+        String urlLogo;
         List<String> urlArquivoList = new ArrayList<>();
         int indice = 1;
 
@@ -215,6 +229,8 @@ public class DemandasController {
                 urlArquivoList.add(urlArquivoLoop);
                 indice++;
             }
+
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -235,7 +251,6 @@ public class DemandasController {
             throw new RuntimeException(e);
         }
 
-
         novaDemanda.setAnexo(urlArquivo);
         novaDemanda.setData_final(data1);
         novaDemanda.setData_inicio(data2);
@@ -243,7 +258,7 @@ public class DemandasController {
         if (demandasDTOs.id_cliente() != null){
             Optional<ClientesModel> clienteOptional = clientesRepository.findById(demandasDTOs.id_cliente());
 
-            if (clienteOptional != null){
+            if (clienteOptional.isPresent()){
                 ClientesModel cliente = clienteOptional.get();
                 novaDemanda.setId_cliente(cliente);
             }else {
@@ -326,6 +341,7 @@ public class DemandasController {
         BeanUtils.copyProperties(demandasDTOs, demandaEditado);
 
         String urlArquivo;
+        String urlLogo;
         List<String> urlArquivoList = new ArrayList<>();
         int indice = 1;
 

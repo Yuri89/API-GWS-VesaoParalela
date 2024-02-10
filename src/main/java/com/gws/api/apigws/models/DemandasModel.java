@@ -47,7 +47,7 @@ public class DemandasModel implements Serializable {
     @Column(nullable = false,unique = false)
     private LocalDate data_final;
     @Column(nullable = false,unique = false)
-    private int custo;
+    private double custo;
     @Column(nullable = false,unique = false)
     private String anexo;
 

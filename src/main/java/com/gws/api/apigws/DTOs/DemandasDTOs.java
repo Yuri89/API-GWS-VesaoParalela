@@ -15,11 +15,11 @@ public record DemandasDTOs(
         @NotBlank String logo,
         @NotBlank String descricao,
         TipoPrioridadeModel prioridade,
-        @NotNull boolean privacidade,
+        @NotNull Boolean privacidade,
         TipoStatusModel status,
         @NotBlank String data_inicio,
         @NotBlank String data_final,
-        @NotNull double custo,
+        @NotNull Double custo,
         List<MultipartFile> copy_anexo,
 
         List<String> id_segmento,

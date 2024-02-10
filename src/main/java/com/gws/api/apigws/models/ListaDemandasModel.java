@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -28,6 +29,8 @@ public class ListaDemandasModel implements Serializable {
     private String titulo;
     private String logo;
     private String descricao;
+    private LocalDate data_inicio;
+    private LocalDate data_final;
     private String anexo;
 
 
@@ -45,5 +48,4 @@ public class ListaDemandasModel implements Serializable {
     @OneToMany(mappedBy = "demanda", cascade = CascadeType.REFRESH)
     private Set<TarefasInfoModel> tarefas;
 
-    private int tamanhoTarefa;
 }
