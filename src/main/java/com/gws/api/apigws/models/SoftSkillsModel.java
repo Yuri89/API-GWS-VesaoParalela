@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -26,6 +27,8 @@ public class SoftSkillsModel implements Serializable {
 
     @Column(nullable = false,unique = true)
     private String nome;
+
+    private LocalDate registro;
 
     @ManyToMany(mappedBy = "id_softskill")
     private Set<UsuarioModel> id_usuario = new HashSet<>();

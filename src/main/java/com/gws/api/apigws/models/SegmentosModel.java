@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -25,6 +26,8 @@ public class SegmentosModel implements Serializable {
     private UUID id_segmentos;
 
     private String segmento;
+
+    private LocalDate registro;
 
     @ManyToMany(mappedBy = "id_segmentos")
     private Set<DemandasModel> id_demanda = new HashSet<>();

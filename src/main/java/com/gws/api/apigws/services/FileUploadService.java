@@ -1,12 +1,14 @@
 package com.gws.api.apigws.services;
 
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -78,6 +80,25 @@ public class FileUploadService {
             arquivoSelecionado.delete();
         }
 
+    }
+
+    public MultipartFile fazeLeituraImagem(String caminhoImagem) throws IOException {
+        // Verifica se o caminho é um caminho completo no sistema de arquivos
+        String caminhoCompleto = "/static/img/"+caminhoImagem;
+
+        InputStream inputStream;
+
+            // Ler a imagem do classpath
+            Resource resource = new ClassPathResource(caminhoCompleto);
+            System.out.println(resource.getDescription());
+            inputStream = resource.getInputStream();
+
+
+        // Lê os bytes da imagem
+        byte[] bytes = StreamUtils.copyToByteArray(inputStream);
+
+        // Cria um MultipartFile a partir dos bytes da imagem
+        return (MultipartFile) new ByteArrayResource(bytes).getFile();
     }
 
 }

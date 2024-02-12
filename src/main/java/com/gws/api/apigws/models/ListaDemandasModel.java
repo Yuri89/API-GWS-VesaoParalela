@@ -31,6 +31,7 @@ public class ListaDemandasModel implements Serializable {
     private String descricao;
     private LocalDate data_inicio;
     private LocalDate data_final;
+    @JsonIgnore
     private String anexo;
 
 

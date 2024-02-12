@@ -9,6 +9,8 @@ import com.gws.api.apigws.services.FileUploadService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -123,15 +125,16 @@ public class DemandasController {
             String[] anexos = demanda.getAnexo().split(",");
 
             for (int i = 0; i < anexos.length; i++) {
-                anexos[i] = fileUploadService.getDiretorioAnx() + anexos[i].trim();
+                anexos[i] = fileUploadService.getDiretorioAnx() + "\\" + anexos[i].trim();
             }
 
             List<String> anexosLista = List.of(anexos);
 
             for (ListaUsuariosModel usuario : usuarios) {
                 String fileFoto = fileUploadService.getDiretorioImg().toString();
+
                 String strFoto = usuario.getUrl_img();
-                String linkFoto = fileFoto + strFoto;
+                String linkFoto = fileFoto + "\\" + strFoto.trim();
                 usuario.setUrl_img(linkFoto);
             }
 
@@ -162,15 +165,26 @@ public class DemandasController {
     public ResponseEntity<Object> BuscarDashboardDemandas(){
 
         List<DemandasModel> demandasList = demandasRepository.findAll();
+        Map<String , Object> listaInfo = new HashMap<>();
 
         double total = 0;
+        int numeroDemandas = 0;
+        int demandasAtivas = 0;
 
         for (DemandasModel demandas : demandasList){
             double custo = demandas.getCusto();
             total += custo;
+            numeroDemandas++;
+            if (demandas.getStatus() == TipoStatusModel.EM_PROGRESSO || demandas.getStatus() == TipoStatusModel.NOVO){
+                demandasAtivas++;
+            }
         }
 
-        return ResponseEntity.status(HttpStatus.OK).body(total);
+        listaInfo.put("custo",total);
+        listaInfo.put("NumeroDemandas", numeroDemandas);
+        listaInfo.put("DemandasAtivas", demandasAtivas);
+
+        return ResponseEntity.status(HttpStatus.OK).body(listaInfo);
     }
 
 
@@ -218,7 +232,7 @@ public class DemandasController {
         BeanUtils.copyProperties(demandasDTOs, novaDemanda);
 
         String urlArquivo;
-        String urlLogo;
+        String urlArquivoLogo;
         List<String> urlArquivoList = new ArrayList<>();
         int indice = 1;
 
@@ -230,6 +244,7 @@ public class DemandasController {
                 indice++;
             }
 
+            urlArquivoLogo = fileUploadService.fazerUpload(demandasDTOs.logo());
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -251,6 +266,7 @@ public class DemandasController {
             throw new RuntimeException(e);
         }
 
+        novaDemanda.setLogo(urlArquivoLogo);
         novaDemanda.setAnexo(urlArquivo);
         novaDemanda.setData_final(data1);
         novaDemanda.setData_inicio(data2);
@@ -341,7 +357,7 @@ public class DemandasController {
         BeanUtils.copyProperties(demandasDTOs, demandaEditado);
 
         String urlArquivo;
-        String urlLogo;
+        String urlArquivoLogo;
         List<String> urlArquivoList = new ArrayList<>();
         int indice = 1;
 
@@ -351,6 +367,9 @@ public class DemandasController {
                 urlArquivoList.add(urlArquivoLoop);
                 indice++;
             }
+
+            urlArquivoLogo = fileUploadService.fazerUpload(demandasDTOs.logo());
+
         }catch (IOException e){
             throw new RuntimeException(e);
         }
@@ -371,6 +390,7 @@ public class DemandasController {
             throw new RuntimeException(e);
         }
 
+        demandaEditado.setLogo(urlArquivoLogo);
         demandaEditado.setAnexo(urlArquivo);
         demandaEditado.setData_final(data1);
         demandaEditado.setData_inicio(data2);

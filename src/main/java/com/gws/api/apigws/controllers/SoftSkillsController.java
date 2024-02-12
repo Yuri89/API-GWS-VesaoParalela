@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -46,10 +47,12 @@ public class SoftSkillsController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("SoftSkill já cadastrado");
         }
 
-        SoftSkillsModel novoUsuario = new SoftSkillsModel();
-        BeanUtils.copyProperties(softSkillsDTOs, novoUsuario);
+        SoftSkillsModel novaSoftSkill = new SoftSkillsModel();
+        BeanUtils.copyProperties(softSkillsDTOs, novaSoftSkill);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(softSkillsRepository.save(novoUsuario));
+        novaSoftSkill.setRegistro(LocalDate.now());
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(softSkillsRepository.save(novaSoftSkill));
     }
 
     @PutMapping("/{id}")

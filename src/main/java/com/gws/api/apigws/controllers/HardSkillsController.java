@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -47,6 +48,8 @@ public class HardSkillsController {
 
         HardSkillsModel novaHardSkills = new HardSkillsModel();
         BeanUtils.copyProperties(hardSkillsDTOs, novaHardSkills);
+
+        novaHardSkills.setRegistro(LocalDate.now());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(hardSkillsRepository.save(novaHardSkills));
     }

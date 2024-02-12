@@ -50,6 +50,7 @@ public class SegmentosController {
         SegmentosModel novoSegmento = new SegmentosModel();
         BeanUtils.copyProperties(segmentosDTOs, novoSegmento);
 
+
         return ResponseEntity.status(HttpStatus.CREATED).body(segmentosRepository.save(novoSegmento));
     }
 
