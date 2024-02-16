@@ -52,9 +52,10 @@ public class HorasTrabalhoController {
         Optional<HorasTrabalhoModel> horasTrabalhoList = Optional.ofNullable(horasTrabalhoRepository.findByDiaRegistro(dia_registro));
         Optional<UsuarioModel> usuarioOptional = usuariosRepository.findById(UUID.fromString(horasTrabalhoDTOs.idUsuario()));
 
-        if (!horasTrabalhoList.isEmpty() && usuarioOptional.isPresent()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dia já cadastrado para o usuário");
-        }
+//          revisão de logica
+//        if (!horasTrabalhoList.isEmpty() && usuarioOptional.isPresent()) {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dia já cadastrado para o usuário");
+//        }
 
         HorasTrabalhoModel novaHorasTrabalho = new HorasTrabalhoModel();
         BeanUtils.copyProperties(horasTrabalhoDTOs, novaHorasTrabalho);

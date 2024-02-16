@@ -12,7 +12,6 @@ import java.util.UUID;
 
 public record DemandasDTOs(
         @NotBlank String titulo,
-        MultipartFile logo,
         @NotBlank String descricao,
         TipoPrioridadeModel prioridade,
         @NotNull Boolean privacidade,

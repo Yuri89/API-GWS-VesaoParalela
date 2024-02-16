@@ -1,62 +1,64 @@
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\LoginController.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\config\SecurityFilter.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\UsuariosDTOs.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\SoftSkillsModel.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\TarefasRepository.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\ListaUsuariosModel.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\MediaSomaModel.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\TarefasController.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\ServletInitializer.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\HorasTrabalhoModel.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\SoftSkillsDTOs.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\DemandasDTOs.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\TokenDto.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\ListaDemandasRepository.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\services\FileUploadService.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\TarefasDTOs.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\HorasTrabalhoController.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\HardSkillsDTOs.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\ClientesRepository.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\AvaliacaoController.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\services\TokenService.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\UsuarioModel.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\LoginDto.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\MediaSomaRepository.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\ApiGwsApplication.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\SoftSkillsController.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\ClientesController.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\ClientesModel.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\DemandasRepository.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\services\ConverterDataTime.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\services\ConcatenarStrings.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\ListaDemandasModel.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\SoftSkillsRepository.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\UsuariosRepository.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\DemandasModel.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\TipoUsuarioModel.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\ImagemDtos.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\HardSkillsController.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\TipoPrioridadeModel.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\AvaliacaoModel.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\HardSkillsRepository.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\TipoConclusao.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\AvaliacaoRepository.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\DemandasController.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\services\FTEService.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\config\SecurityConfig.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\HardSkillsModel.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\TipoConceito.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\MediaSomaController.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\SegmentosController.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\TipoStatusModel.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\ClientesDTOs.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\services\CalcularSemMesAnoService.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\TarefasModel.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\SegmentosModel.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\SegmentosRepository.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\services\AuthService.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\UsuarioController.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\SegmentosDTOs.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\HorasTrabalhoRepository.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\HorasTrabalhoDTOs.java
-C:\Users\35056968897\Desktop\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\AvaliacaoDTO.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\MediaSomaController.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\SoftSkillsDTOs.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\ListaDemandasRepository.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\DemandasRepository.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\DemandasModel.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\ListaUsuariosRepository.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\TarefasInfoModel.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\SegmentosController.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\ClientesDTOs.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\DemandasController.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\AvaliacaoRepository.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\ServletInitializer.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\HorasTrabalhoController.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\TipoPrioridadeModel.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\TipoStatusModel.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\HardSkillsDTOs.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\MediaSomaRepository.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\SegmentosRepository.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\ApiGwsApplication.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\LoginController.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\LoginDto.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\ClientesRepository.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\TarefasDTOs.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\services\AuthService.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\services\ConcatenarStrings.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\services\FTEService.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\AvaliacaoController.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\UsuariosRepository.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\SoftSkillsModel.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\HardSkillsController.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\TokenDto.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\TipoConceito.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\ClientesModel.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\HorasTrabalhoRepository.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\services\ConverterDataTime.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\ClientesController.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\config\SecurityConfig.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\ListaUsuariosModel.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\HorasTrabalhoDTOs.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\SoftSkillsController.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\AvaliacaoModel.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\AvaliacaoDTO.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\services\TokenService.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\UsuariosDTOs.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\MediaSomaModel.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\ListaDemandasModel.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\TarefasController.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\SoftSkillsRepository.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\UsuarioModel.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\config\SecurityFilter.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\ImagemDtos.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\HorasTrabalhoModel.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\services\FileUploadService.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\HardSkillsRepository.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\services\CalcularSemMesAnoService.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\TipoUsuarioModel.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\TarefasRepository.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\TipoConclusao.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\HardSkillsModel.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\TarefasModel.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\UsuarioController.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\SegmentosDTOs.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\SegmentosModel.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\DemandasDTOs.java

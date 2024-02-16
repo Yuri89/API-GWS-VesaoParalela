@@ -250,7 +250,7 @@ public class DemandasController {
         BeanUtils.copyProperties(demandasDTOs, novaDemanda);
 
         String urlArquivo;
-        String urlArquivoLogo;
+
         List<String> urlArquivoList = new ArrayList<>();
         int indice = 1;
 
@@ -262,7 +262,7 @@ public class DemandasController {
                 indice++;
             }
 
-            urlArquivoLogo = fileUploadService.fazerUpload(demandasDTOs.logo());
+
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -284,7 +284,7 @@ public class DemandasController {
             throw new RuntimeException(e);
         }
 
-        novaDemanda.setLogo(urlArquivoLogo);
+
         novaDemanda.setAnexo(urlArquivo);
         novaDemanda.setData_final(data1);
         novaDemanda.setData_inicio(data2);
@@ -375,7 +375,7 @@ public class DemandasController {
         BeanUtils.copyProperties(demandasDTOs, demandaEditado);
 
         String urlArquivo;
-        String urlArquivoLogo;
+
         List<String> urlArquivoList = new ArrayList<>();
         int indice = 1;
 
@@ -386,7 +386,7 @@ public class DemandasController {
                 indice++;
             }
 
-            urlArquivoLogo = fileUploadService.fazerUpload(demandasDTOs.logo());
+
 
         }catch (IOException e){
             throw new RuntimeException(e);
@@ -408,7 +408,7 @@ public class DemandasController {
             throw new RuntimeException(e);
         }
 
-        demandaEditado.setLogo(urlArquivoLogo);
+
         demandaEditado.setAnexo(urlArquivo);
         demandaEditado.setData_final(data1);
         demandaEditado.setData_inicio(data2);

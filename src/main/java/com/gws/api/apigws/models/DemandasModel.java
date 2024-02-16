@@ -33,8 +33,6 @@ public class DemandasModel implements Serializable {
     @Column(nullable = false,unique = false)
     private String titulo;
     @Column(nullable = false,unique = false)
-    private String logo;
-    @Column(nullable = false,unique = false)
     private String descricao;
     @Column(nullable = false,unique = false, columnDefinition = "BIT")
     private TipoPrioridadeModel prioridade;
