@@ -47,6 +47,8 @@ public class DemandasController {
     HardSkillsRepository hardSkillsRepository;
     @Autowired
     SoftSkillsRepository softSkillsRepository;
+    @Autowired
+    HorasTrabalhoRepository horasTrabalhoRepository;
 
 
     @GetMapping
@@ -140,19 +142,27 @@ public class DemandasController {
 
             Set<TarefasInfoModel> tarefas = demanda.getTarefas();
             int tamanhoTarefa = tarefas.size();
+            int tamanhoUm = 0;
             int tamanhoDois = 0;
 
             for (TarefasInfoModel tamanho : tarefas) {
+                tamanhoUm++;
                 if (tamanho.getConclusao() == TipoConclusao.TUDO_CONCLUIDO) {
                     tamanhoDois++;
                 }
             }
 
+            double porcentagem = 0;
+
+            if (tamanhoUm < 0){
+                porcentagem =  ((double)tamanhoDois / (double)tamanhoUm)*100;
+            }
 
 
             resposta.put("demandas", demanda);
             resposta.put("tamanho", tamanhoTarefa);
             resposta.put("concluidas", tamanhoDois);
+            resposta.put("porcentagem", porcentagem);
             resposta.put("anexos", anexosLista);
 
             respostaList.add(resposta);
@@ -165,11 +175,13 @@ public class DemandasController {
     public ResponseEntity<Object> BuscarDashboardDemandas(){
 
         List<DemandasModel> demandasList = demandasRepository.findAll();
+        List<HorasTrabalhoModel> horasList = horasTrabalhoRepository.findAll();
         Map<String , Object> listaInfo = new HashMap<>();
 
         double total = 0;
         int numeroDemandas = 0;
         int demandasAtivas = 0;
+        int horatotais = 0;
 
         for (DemandasModel demandas : demandasList){
             double custo = demandas.getCusto();
@@ -180,9 +192,15 @@ public class DemandasController {
             }
         }
 
-        listaInfo.put("custo",total);
+        for (HorasTrabalhoModel horas : horasList){
+            int horasDb = horas.getHoras();
+            horatotais += horasDb;
+        }
+
+        listaInfo.put("Custo",total);
         listaInfo.put("NumeroDemandas", numeroDemandas);
         listaInfo.put("DemandasAtivas", demandasAtivas);
+        listaInfo.put("HorasTotais", horatotais);
 
         return ResponseEntity.status(HttpStatus.OK).body(listaInfo);
     }
