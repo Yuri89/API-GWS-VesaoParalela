@@ -81,7 +81,8 @@ public class HorasTrabalhoController {
         }
 
         HorasTrabalhoModel horasTrabalhoEditada = buscandoHorasTrabalho.get();
-        BeanUtils.copyProperties(horasTrabalhoDTOs, horasTrabalhoEditada);
+
+
 
 
         return ResponseEntity.status(HttpStatus.CREATED).body(horasTrabalhoRepository.save(horasTrabalhoEditada));

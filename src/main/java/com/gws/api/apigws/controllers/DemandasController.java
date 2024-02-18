@@ -444,7 +444,7 @@ public class DemandasController {
         Optional<DemandasModel> demandaBuscado = demandasRepository.findById(id);
 
         if (demandaBuscado.isEmpty()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Demanda não encontrado");
         }
 
 

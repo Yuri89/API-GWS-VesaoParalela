@@ -13,41 +13,29 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
-
 @Entity
 @Getter
 @Setter
 @Table(name = "tb_demandas")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_demanda")
-public class ListaDemandasModel implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 1L;
+public class ListaUDemandasModel implements Serializable {
 
     @Id
+    @GeneratedValue
     private UUID id_demanda;
+
     private String titulo;
     private String logo;
-    private String status;
     private String descricao;
     private LocalDate data_inicio;
     private LocalDate data_final;
-    @JsonIgnore
     private String anexo;
 
-
-    @ManyToMany
-    @JoinTable(
-            name = "tb_usuarios_demandas",
-            joinColumns = @JoinColumn(name = "id_demanda",unique = false),
-            inverseJoinColumns = @JoinColumn(name = "id_usuario",unique = false)
-
-    )
-    private Set<ListaUsuariosModel> id_usuario = new HashSet<>();
-
+    @JsonIgnore
+    @ManyToMany(mappedBy = "demandas")
+    private Set<ListaUUsuariosModel> usuarios = new HashSet<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "demanda", cascade = CascadeType.REFRESH)
     private Set<TarefasInfoModel> tarefas;
-
 }

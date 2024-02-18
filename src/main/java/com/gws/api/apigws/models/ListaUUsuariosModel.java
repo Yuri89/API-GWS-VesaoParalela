@@ -3,10 +3,7 @@ package com.gws.api.apigws.models;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,26 +12,28 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
-
 @Entity
 @Getter
 @Setter
 @Table(name = "tb_usuarios")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_usuario")
-public class ListaUsuariosModel implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 1L;
+public class ListaUUsuariosModel implements Serializable {
 
     @Id
+    @GeneratedValue
     private UUID id_usuario;
 
     private String nome;
     private String sobrenome;
+    private String designacao;
     private String url_img;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "id_usuario")
-    private Set<ListaDemandasModel> id_demanda = new HashSet<>();
-
+    @ManyToMany
+    @JoinTable(
+            name = "tb_usuarios_demandas",
+            joinColumns = @JoinColumn(name = "id_usuario"),
+            inverseJoinColumns = @JoinColumn(name = "id_demanda")
+    )
+    private Set<ListaUDemandasModel> demandas = new HashSet<>();
 }

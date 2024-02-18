@@ -30,7 +30,9 @@ C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\m
 C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\HardSkillsController.java
 C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\TokenDto.java
 C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\TipoConceito.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\ListaUDemandasRepository.java
 C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\ClientesModel.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\ListaUUsuariosRepository.java
 C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\HorasTrabalhoRepository.java
 C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\services\ConverterDataTime.java
 C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\ClientesController.java
@@ -46,6 +48,7 @@ C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\m
 C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\ListaDemandasModel.java
 C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\controllers\TarefasController.java
 C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\SoftSkillsRepository.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\ListaUUsuariosModel.java
 C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\UsuarioModel.java
 C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\config\SecurityFilter.java
 C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\DTOs\ImagemDtos.java
@@ -54,6 +57,7 @@ C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\m
 C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\HardSkillsRepository.java
 C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\services\CalcularSemMesAnoService.java
 C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\TipoUsuarioModel.java
+C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\ListaUDemandasModel.java
 C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\repositories\TarefasRepository.java
 C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\TipoConclusao.java
 C:\Users\PICHAU\Documents\Programas e Projetos\sites\API-GWS-VesaoParalela\src\main\java\com\gws\api\apigws\models\HardSkillsModel.java

@@ -2,14 +2,8 @@ package com.gws.api.apigws.controllers;
 
 import com.gws.api.apigws.DTOs.ImagemDtos;
 import com.gws.api.apigws.DTOs.UsuariosDTOs;
-import com.gws.api.apigws.models.DemandasModel;
-import com.gws.api.apigws.models.HardSkillsModel;
-import com.gws.api.apigws.models.SoftSkillsModel;
-import com.gws.api.apigws.models.UsuarioModel;
-import com.gws.api.apigws.repositories.DemandasRepository;
-import com.gws.api.apigws.repositories.HardSkillsRepository;
-import com.gws.api.apigws.repositories.SoftSkillsRepository;
-import com.gws.api.apigws.repositories.UsuariosRepository;
+import com.gws.api.apigws.models.*;
+import com.gws.api.apigws.repositories.*;
 import com.gws.api.apigws.services.ConverterDataTime;
 import com.gws.api.apigws.services.FileUploadService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -44,8 +38,13 @@ public class UsuarioController {
     FileUploadService fileUploadService;
     @Autowired
     ConverterDataTime converterDataTime;
+    @Autowired
+    ListaUUsuariosRepository uUsuariosRepository;
+    @Autowired
+    ListaUDemandasRepository uDemandasRepository;
 
-
+    @Autowired
+    TarefasRepository tarefasRepository;
     @Autowired
     DemandasRepository demandasRepository;
     @Autowired
@@ -85,6 +84,38 @@ public class UsuarioController {
 
         return ResponseEntity.status(HttpStatus.OK).body(usuarioBuscado.get());
     }
+    @GetMapping("/listar-usuarios")
+    public ResponseEntity<Object> listaDeUsuarios() {
+        List<ListaUUsuariosModel> usuarios = uUsuariosRepository.findAll();
+
+        List<Map<String, Object>> listaUsuarios = new ArrayList<>();
+
+        for (ListaUUsuariosModel usuario : usuarios) {
+            int projetos = 0;
+            int tarefas = 0;
+
+            Map<String, Object> usuarioInfo = new LinkedHashMap<>();
+            usuarioInfo.put("usuario", usuario);
+
+            Set<ListaUDemandasModel> demandas = usuario.getDemandas();
+            for (ListaUDemandasModel demanda : demandas) {
+                projetos++;
+                for (TarefasInfoModel tarefa : demanda.getTarefas()) {
+                    tarefas++;
+                }
+            }
+
+            usuarioInfo.put("projetos", projetos);
+            usuarioInfo.put("tarefas", tarefas);
+
+            listaUsuarios.add(usuarioInfo);
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(listaUsuarios);
+    }
+
+
+
 
     @Operation(summary = "Método para cadastrar um Usuário", method = "POST")
     @ApiResponses(value = {
